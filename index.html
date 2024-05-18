@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        data=fetch("https://fakestoreapi.com/products")
+        data.then((e)=>e.json()).then((e)=>{
+            res=e
+            md=document.createElement("div")
+            document.body.appendChild(md)
+            md.style.width="100%"
+            md.style.height="100%"
+            md.style.backgroundImage="linear-gradient(aqua,lightblue)"
+            md.style.border="2px solid transparent"
+            md.style.display="flex"
+            md.style.flexDirection="row"
+            md.style.justifyContent="space-around"
+            md.style.alignitems="space-around"
+            md.style.gap="10px"
+            md.style.flexWrap="wrap"
+            console.log(e)
+            for(i of res){
+                cd=document.createElement("div")
+                cd.setAttribute("style","background-color:grey;width:330px;border-radius:10px;margin-top:5px")
+
+                fh=document.createElement("h3")
+                fh.style.textAlign="center"
+
+                image=document.createElement("img")
+                image.setAttribute("style","width:100px;height:100px;margin-left:100px")
+                
+                price=document.createElement("h4")
+                price.style.textAlign="center"
+                rating=document.createElement("h4")
+                rating.style.textAlign="center"
+
+                fh.innerHTML=i.title
+                image.src=i.image
+                // description.innerHTML
+                price.innerHTML="Price:₹"+i.price;
+                rating.innerHTML="Rating: "+i.rating.rate+"&#9733;"
+
+
+                cd.appendChild(fh)
+                cd.appendChild(image)
+                cd.appendChild(price)
+                cd.appendChild(rating)
+                md.appendChild(cd)
+                
+
+            }
+
+        })
+    </script>
+    
+</body>
+</html>
